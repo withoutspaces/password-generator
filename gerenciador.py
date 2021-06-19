@@ -1,7 +1,25 @@
-import time
-import random
+from time import sleep
+from random import choice
 import string
 import secrets
+import os
+
+def limpar_tela():
+    os.system('cls' if os.name == 'nt' else 'clear')
+    return
+
+
+def salvar_senha(password_list):
+    arquivo = open('senhas.txt', 'r')
+    conteudo = arquivo.readlines()
+
+    conteudo.append(password_list)
+
+    arquivo = open('senhas.txt', 'w')
+    arquivo.writelines(conteudo)
+    arquivo.close()
+
+    return
 
 
 def cadastrar_senha_gerada(password):
@@ -18,7 +36,6 @@ def cadastrar_senha_gerada(password):
     password_list.append(str(input("Usuário: ")).lower())
     password_list.append(str(input("E-mail: ")).lower())
 
-    print(password_list)
     print('**'*20)
 
 
@@ -42,12 +59,15 @@ def gerar_senha():
     print()
 
     save_pass = str(input('\nDeseja cadastrar essa senha: [y/n] ')).lower()
+    limpar_tela()
+
     print()
 
     if save_pass == 'y':
         cadastrar_senha_gerada(password)
     else:
         menu()
+
     return
 
     
@@ -62,7 +82,11 @@ def menu():
     [3] Listar senhas
     [4] Sair""")
 
+    
+
     escolha = int(input("Digite a opção escolhida: "))
+    limpar_tela()
+
     if escolha == 1:
         gerar_senha()
     elif escolha == 2:
