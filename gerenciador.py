@@ -33,7 +33,7 @@ def cadastrar_senha_gerada(password):
     else:    
         password_list.append(password)
     password_list.append(str(input("Site: ")).lower())
-    password_list.append(str(input("Usuário: ")).lower())
+    password_list.append(str(input("Usuário: "))
     password_list.append(str(input("E-mail: ")).lower())
 
     print('**'*20)
