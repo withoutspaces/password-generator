@@ -9,42 +9,12 @@ def limpar_tela():
     return
 
 
-def salvar_senha(password_list):
-    arquivo = open('senhas.txt', 'r')
-    conteudo = arquivo.readlines()
-
-    conteudo.append(password_list)
-
-    arquivo = open('senhas.txt', 'w')
-    arquivo.writelines(conteudo)
-    arquivo.close()
-
-    return
-
-
-def cadastrar_senha_gerada(password):
-    
-    password_list = []
-    print('**'*20)
-
-    if password == '':
-        new_pass = str(input('Digite sua senha: '))
-        password_list.append(new_pass)
-    else:    
-        password_list.append(password)
-    password_list.append(str(input("Site: ")).lower())
-    password_list.append(str(input("Usuário: "))
-    password_list.append(str(input("E-mail: ")).lower())
-
-    print('**'*20)
-
-
 def gerar_senha():
     print("-="*20)
 
     how_much_cararc = int(input("Quantos caracteres terá a senha?: "))
 
-    alphabet = string.ascii_letters + string.digits
+    alphabet = string.ascii_letters + string.digits + string.punctuation
     
     password = ''.join(secrets.choice(alphabet) for i in range(how_much_cararc))
     if (any(c.islower() for c in password)
@@ -58,16 +28,6 @@ def gerar_senha():
     print('**'*20)
     print()
 
-    save_pass = str(input('\nDeseja cadastrar essa senha: [y/n] ')).lower()
-    limpar_tela()
-
-    print()
-
-    if save_pass == 'y':
-        cadastrar_senha_gerada(password)
-    else:
-        menu()
-
     return
 
     
@@ -78,9 +38,7 @@ def menu():
 
     print("Escolha uma opção")
     print("""    [1] Gerar nova senha
-    [2] Cadastrar nova senha
-    [3] Listar senhas
-    [4] Sair""")
+    [2] Sair""")
 
     
 
@@ -90,9 +48,6 @@ def menu():
     if escolha == 1:
         gerar_senha()
     elif escolha == 2:
-        password = ''
-        cadastrar_senha_gerada(password)
-    elif escolha == 4:
         return
 
 
