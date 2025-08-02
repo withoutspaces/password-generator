@@ -7,6 +7,8 @@ Um gerador de senhas aleatórias, feito com React e TypeScript! Permite o usuár
 - React
 - TypeScript
 - Tailwind
+- Animações com Lotties
+- PhosphorIcons
 - Vite
 - React Hook Form
 - Zod
