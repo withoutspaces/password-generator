@@ -9,18 +9,7 @@ import { useForm } from "react-hook-form";
 import { Footer } from "./components/Footer";
 import { Title } from "./components/Title";
 import { Input } from "./components/FormInput";
-
-import animationData from "../public/lotties/animation.json";
-import Lottie from "react-lottie";
-
-const defaultOptions = {
-  loop: true,
-  autoplay: true,
-  animationData: animationData,
-  rendererSettings: {
-    preserveAspectRatio: "xMidYMid slice",
-  },
-};
+import { SideInfo } from "./components/SideInfo";
 
 export default function App() {
   const {
@@ -40,25 +29,16 @@ export default function App() {
 
   return (
     <div className="w-full h-screen flex items-center justify-center bg-gradient-to-tr from-slate-950 via-indigo-900 to-indigo-950 text-slate-100 antialiased">
-      <div className="flex drop-shadow-2xl">
-        <div className="border-b border-l border-t rounded-l-xl border-blue-500 p-10 w-96">
-          <Lottie options={defaultOptions} height={300} width={300} />
-          <ul className="space-y-6 text-slate-300">
-            <li>Combine letras, números e símbolos para máxima proteção.</li>
-            <li>Gere uma senha que nem você conseguiria adivinhar.</li>
-            <li>Sua vida digital merece essa proteção.</li>
-          </ul>
-        </div>
-        <div className="flex flex-col  items-center gap-10 p-6 sm:p-12 border-b border-r border-t border-blue-500 rounded-r-2xl bg-slate-300">
+      <div className="flex drop-shadow-2xl justify-center">
+        <SideInfo />
+        <div className="w-11/12 md:w-full flex flex-col items-center gap-6 md:gap-10 p-6 sm:p-12 border-b border-r border-t  border-blue-500  lg:rounded-r-2xl bg-slate-300">
           <Title />
           <span className="text-slate-700">
             Selecione as opções abaixo para gerar a sua nova senha
           </span>
           <div className="w-full flex flex-col items-center gap-1">
             <PassArea onClick={handleCopyToClipboard}>
-              <span className="flex" aria-expanded={"false"}>
-                {generatedPass}
-              </span>
+              <span className="flex p-2">{generatedPass}</span>
             </PassArea>
             {generatedPass && (
               <span className="text-sm text-slate-700">Senha gerada! Clique para copiar</span>
@@ -90,7 +70,7 @@ export default function App() {
               </div>
             </div>
 
-            <div className="flex gap-8 justify-center">
+            <div className="flex gap-4 md:gap-8 justify-center md:flex-nowrap">
               <Input.Root>
                 <Input.FormInput type="checkbox" {...register("uppercase")} defaultChecked />
                 <Input.Label>ABC</Input.Label>
@@ -100,7 +80,6 @@ export default function App() {
                 <Input.FormInput type="checkbox" {...register("lowercase")} defaultChecked />
                 <Input.Label>abc</Input.Label>
               </Input.Root>
-
               <Input.Root>
                 <Input.FormInput type="checkbox" {...register("numbers")} />
                 <Input.Label>123</Input.Label>
