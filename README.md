@@ -47,4 +47,4 @@ yarn dev
 
 ## Screenshots
 
-![Tela inicial]()
+![Tela inicial](https://github.com/withoutspaces/password-generator/blob/main/screenshots/screenshot.png)
